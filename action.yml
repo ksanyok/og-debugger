@@ -1,0 +1,16 @@
+name: "Open Graph Debugger by PromoPilot"
+description: "Check Open Graph and Twitter Card tags and the share image of a page."
+author: "Alexandr Krikun"
+branding:
+  icon: "share-2"
+  color: "purple"
+inputs:
+  args:
+    description: "Arguments passed to the og-debugger CLI, e.g. \"example.com\""
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Run og-debugger
+      shell: bash
+      run: node "$GITHUB_ACTION_PATH/bin/cli.js" ${{ inputs.args }}
